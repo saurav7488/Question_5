@@ -1,0 +1,37 @@
+Q1>  the total number of users
+[
+    {
+        $group: {
+            _id: null,  // Group all the document
+            totalNumberOfUser: {
+                $sum: 1   // And Count the total number of documents
+            }
+        }
+    }
+]
+
+Q2> the average age of user
+
+[
+    {
+        $group: {
+            _id: null,   // Group all the document
+            averageAge: {
+                $avg: "$age"  // ANd fin the average age 
+            }
+        }
+    }
+]
+
+Q3> the number of users in each country.
+
+[
+    {
+        $group: {     //  use the document field as grouping
+            _id: "$country",
+            numberOfUserInCOuntry: {  // calculate number of user in each country
+                $sum: 1   // increment by 1
+            }
+        }
+    }
+]
